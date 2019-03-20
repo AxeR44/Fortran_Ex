@@ -4,7 +4,7 @@
 		REAL X(15)
 		NORMA1 = 0
 		DO I = 1, N
-			NORMA1 = NORMA1 + abs(X(I))
+			NORMA1 = NORMA1 + ABS(X(I))
 		ENDDO
 	END	FUNCTION
 
@@ -15,7 +15,7 @@
 		DO I = 1, N
 			NORMA2 = NORMA2 + (X(I)*X(I))
 		ENDDO
-		NORMA2 = sqrt(norma2)
+		NORMA2 = SQRT(norma2)
 	END	FUNCTION
 
 	REAL FUNCTION NORMAINF(X, N)
@@ -24,7 +24,7 @@
 		REAL ABSOL
 		NORMAINF = 0
 		DO I = 1, N
-			ABSOL = abs(X(I))
+			ABSOL = ABS(X(I))
 			IF(ABSOL.GT.normainf)THEN
 				NORMAINF = ABSOL
 			ENDIF
@@ -44,12 +44,12 @@
 				K(J) = K(J-1) + ADD
 			ENDDO
 			K(I) = 1
-			N1 = NORMA1(K, I)
-			N2 = NORMA2(K, I)
-			NI = NORMAINF(K, I)
-			WRITE(*,*) I, N1, N2, NI
-			WRITE(1,*) I, N1
-			WRITE(2,*) I, N2
-			WRITE(3,*) I, NI
+			NORMA1 = NORMA1(K, I)
+			NORMA2 = NORMA2(K, I)
+			NORMAINF = NORMAINF(K, I)
+			WRITE(*,*) I, NORMA1, NORMA2, NORMAINF
+			WRITE(1,*) I, NORMA1
+			WRITE(2,*) I, NORMA2
+			WRITE(3,*) I, NORMAINF
 		ENDDO	
      	END	PROGRAM												 
